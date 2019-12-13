@@ -25,5 +25,6 @@ namespace RegistrationAndLoginWebsite.Data
 
         public int IsBlocked { get; set; }
 
+
     }
 }
