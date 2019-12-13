@@ -63,6 +63,15 @@ namespace RegistrationAndLoginWebsite
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseCookiePolicy();
+            app.UseMvc();
+
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "area",
+                    template: "{area=exits}/{controller=Home}/{action=Index}/{id?}");
+            });
 
             app.UseMvc(routes =>
             {
