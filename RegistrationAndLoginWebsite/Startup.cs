@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RegistrationAndLoginWebsite.Data;
 
 namespace RegistrationAndLoginWebsite
 {
@@ -31,6 +33,10 @@ namespace RegistrationAndLoginWebsite
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<AppDbContext>(options =>
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("UserManagementDb"));
+                });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
