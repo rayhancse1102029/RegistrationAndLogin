@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RegistrationAndLoginWebsite.Data;
+using RegistrationAndLoginWebsite.Data.Entity;
 
 namespace RegistrationAndLoginWebsite
 {
@@ -39,7 +40,7 @@ namespace RegistrationAndLoginWebsite
                     options.UseSqlServer(Configuration.GetConnectionString("UserManagementDb"));
             });
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
