@@ -14,6 +14,11 @@ namespace RegistrationAndLoginWebsite.Areas.Account.Models
 
 
         [Required]
+        [StringLength(maximumLength:100)]
+        public string city { get; set; }
+
+
+        [Required]
         [DataType(DataType.Password)]
         public string password { get; set; }
 

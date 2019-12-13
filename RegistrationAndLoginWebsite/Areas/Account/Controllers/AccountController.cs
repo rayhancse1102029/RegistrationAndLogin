@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RegistrationAndLoginWebsite.Areas.Account.Models;
+using RegistrationAndLoginWebsite.Data.Entity;
 
 namespace RegistrationAndLoginWebsite.Areas.Account.Controllers
 {
@@ -12,11 +13,11 @@ namespace RegistrationAndLoginWebsite.Areas.Account.Controllers
     public class AccountController : Controller
     {
 
-        private readonly UserManager<IdentityUser> userManager;
-        private readonly SignInManager<IdentityUser> signInManager;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -36,7 +37,7 @@ namespace RegistrationAndLoginWebsite.Areas.Account.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser {UserName = model.email, Email = model.email};
+                var user = new ApplicationUser { UserName = model.email, Email = model.email, City = model.city};
 
                 var result = await userManager.CreateAsync(user, model.password);
 
