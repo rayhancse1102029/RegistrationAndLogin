@@ -1,0 +1,31 @@
+﻿
+@model RegistrationAndLoginWebsite.Areas.Account.Models.RoleViewModel
+
+@{
+    ViewData["Title"] = "CreateRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>CreateRole</h1>
+
+<br/>
+
+<h4 class="text-info">@ViewBag.message</h4>
+
+<form asp-are="Account" asp-controller="Roles" asp-action="CreateRole" method="post">
+    <div class="card">
+        <div class="card-header">
+            <h4><b>Create New Role</b></h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-md-2 col-sm-2 col-form-label">Email</label>
+                <div class="col-md-10 col-sm-10">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="    please enter role name " />
+                </div>
+            </div>
+            <input type="submit" value="Create" class="btn btn-primary" style="float: right" />
+
+        </div>
+    </div>
+</form>
