@@ -52,5 +52,23 @@ namespace RegistrationAndLoginWebsite.Areas.Account.Controllers
 
             return View();
         }
+
+        [AcceptVerbs("Get", "Post")]
+        public async Task<IActionResult> RemoteValidation(string email)
+        {
+
+            var result = await userManager.FindByEmailAsync(email);
+
+            if (result == null)
+            {
+               return Json(true);
+            }
+            else
+            {
+               return Json($" " + email + " This email address already exists!!!");
+            }
+        }
+
+
     }
 }

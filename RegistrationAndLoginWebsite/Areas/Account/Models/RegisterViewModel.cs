@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace RegistrationAndLoginWebsite.Areas.Account.Models
 {
@@ -10,6 +11,7 @@ namespace RegistrationAndLoginWebsite.Areas.Account.Models
     {
         [Required]
         [DataType(DataType.EmailAddress)]
+        [Remote(controller: "Account", action: "RemoteValidation")]
         public string email { get; set; }
 
 
